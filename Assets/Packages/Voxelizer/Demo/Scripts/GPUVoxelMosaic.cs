@@ -92,7 +92,7 @@ namespace VoxelSystem.Demo
             renderer.SetPropertyBlock(block);
 
             // Randomize resolution
-            if(Time.frameCount % frequency == 0) level = Random.value;
+            //if(Time.frameCount % frequency == 0) level = Random.value;
         }
 
         void OnDestroy ()
@@ -125,7 +125,7 @@ namespace VoxelSystem.Demo
             particleUpdate.SetInt(kDepthKey, data.Depth);
             particleUpdate.SetVector(kSpeedKey, new Vector2(speedScaleMin, speedScaleMax));
             particleUpdate.SetFloat(kUnitLengthKey, data.UnitLength);
-
+            Debug.Log(setupKernel.ThreadX +"   " +setupKernel.ThreadY + "   " + setupKernel.ThreadZ);
             particleUpdate.Dispatch(setupKernel.Index, particleBuffer.count / (int)setupKernel.ThreadX + 1, (int)setupKernel.ThreadY, (int)setupKernel.ThreadZ);
         }
 
